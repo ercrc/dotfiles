@@ -1,8 +1,9 @@
 local wezterm = require 'wezterm'
-local config = {}
+
+local config = wezterm.config_builder()
 
 config.color_scheme = 'Gruvbox dark, hard (base16)'
-config.font = wezterm.font 'JetBrainsMono NF'
-config.harfbuzz_features = {'liga=1'}
+config.enable_tab_bar = false
+config.window_background_opacity = 0.7
 
 return config

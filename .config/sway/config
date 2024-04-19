@@ -7,15 +7,15 @@
 ### Variables
 #
 font pango: "JetBrainsMono Nerd Font" Regular 11
-# Logo key. Use Mod1 for Alt.
-set $mod Mod4
+# Logo key. Use Mod1 for Alt.Use Mod4 for Super key
+set $mod Mod1
 # Home row direction keys, like vim
 set $left h
 set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term alacritty
+set $term wezterm
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
@@ -25,7 +25,7 @@ set $menu wofi --show drun | xargs swaymsg exec
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /home/steinway/Pictures/wheatfield-with-crows.jpg fill
+output * bg /home/steinway/pictures/wheatfield-with-crows.jpg fill
 #
 # Example configuration:
 #
@@ -90,7 +90,7 @@ bindsym $mod+Tab input * xkb_switch_layout next
     bindsym $mod+Shift+c reload
 
     # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+    bindsym $mod+Shift+e exec swaymsg exit
 #
 # Moving around:
 #
@@ -187,10 +187,10 @@ mode "resize" {
     # right will grow the containers width
     # up will shrink the containers height
     # down will grow the containers height
-    bindsym $left resize shrink width 10px
-    bindsym $down resize grow height 10px
-    bindsym $up resize shrink height 10px
-    bindsym $right resize grow width 10px
+    bindsym $right resize shrink width 10px
+    bindsym $up resize grow height 10px
+    bindsym $down resize shrink height 10px
+    bindsym $left resize grow width 10px
 
     # Ditto, with arrow keys
     bindsym Left resize shrink width 10px
@@ -228,6 +228,7 @@ bar {
     bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%	
 #Custom shortcuts
     bindsym $mod+u exec slurp | grim -g - - | wl-copy
+    bindsym $mod+Shift+d exec cd ~/books && ls ~/books | wofi -d | xargs -r -I {} zathura "{}"
 #wlsunset config
     exec  wlsunset -l -14.8 -L -40.8
 include /etc/sway/config.d/*

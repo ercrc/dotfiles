@@ -1,7 +1,0 @@
-import = ["themes/gruvbox_material_hard_dark.toml"]
-
-[window]
-opacity = 0.7
-
-[font]
-normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }

@@ -17,8 +17,10 @@ disabled = true
 
 [username]
 show_always = true
+style_user = 'red'
 
 [directory]
+style = "green"
 
 [directory.substitutions]
 "Documents" = "󰈙 "
