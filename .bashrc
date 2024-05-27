@@ -1,4 +1,11 @@
-#export PS1="\[$(tput setaf 1)\][\[$(tput setaf 2)\]\u\[$(tput setaf 6)\]@\[$(tput setaf 5)\]\h \[$(tput setaf 6)\]\W\[$(tput setaf 1)\]]\[$(tput setaf 3)\]\\$ \[$(tput sgr0)\]"
+function parse_git_dirty {
+  [[ $(git status --porcelain 2> /dev/null) ]] && echo "*"
+}
+function parse_git_branch {
+  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/ (\1$(parse_git_dirty))/"
+}
+
+#export PS1="\[$(tput setaf 1)\][\[$(tput setaf 2)\]\u\[$(tput setaf 6)\]@\[$(tput setaf 5)\]\h \[$(tput setaf 6)\]\W$(parse_git_branch)\[$(tput setaf 1)\]]\[$(tput setaf 3)\]\\$ \[$(tput sgr0)\]"
 test -s ~/.alias && . ~/.alias || true
 eval "$(starship init bash)"
 eval "$(zoxide init bash)"
@@ -12,14 +19,6 @@ alias pwroff="systemctl poweroff"
 alias sus="systemctl suspend"
 alias hibernate="systemctl hibernate"
 alias reboot="systemctl reboot"
-alias zs="zypper se"
-alias zi="sudo zypper in"
-alias zrm="sudo zypper rm -u"
-alias zif="zypper if"
-alias zlu="zypper lu"
-alias zlr="zypper lr"
-alias zref="sudo zypper ref"
-alias zdup="sudo zypper dup"
 alias img="wezterm imgcat"
 alias fzf="fzf | xargs -r nvim"
 alias cd="z"

@@ -7,8 +7,9 @@
 ### Variables
 #
 font pango: "JetBrainsMono Nerd Font" Regular 11
+default_border pixel 2
 # Logo key. Use Mod1 for Alt.Use Mod4 for Super key
-set $mod Mod1
+set $mod Mod4
 # Home row direction keys, like vim
 set $left h
 set $down j
@@ -23,9 +24,8 @@ set $term wezterm
 #set $menu dmenu_path | wmenu | xargs swaymsg exec --
 set $menu wofi --show drun | xargs swaymsg exec
 ### Output configuration
-#
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /home/steinway/pictures/wheatfield-with-crows.jpg fill
+output * bg wallpapers/wheatfield-with-crows.jpg fill
 #
 # Example configuration:
 #
@@ -229,6 +229,8 @@ bar {
 #Custom shortcuts
     bindsym $mod+u exec slurp | grim -g - - | wl-copy
     bindsym $mod+Shift+d exec cd ~/books && ls ~/books | wofi -d | xargs -r -I {} zathura "{}"
+    bindsym $mod+c exec wl-paste | xargs -r -I {} goldendict "{}"
+    bindsym $mod+Shift+a exec cat yt.ad | wofi -d | xargs -r -I {} mpv "{}"
 #wlsunset config
     exec  wlsunset -l -14.8 -L -40.8
 include /etc/sway/config.d/*

@@ -27,7 +27,7 @@ style = "green"
 "Downloads" = " "
 "Music" = "󰝚 "
 "Pictures" = " "
-"Code" = "󰲋 "
+"code" = "󰲋 "
 
 [git_branch]
 symbol = " "
