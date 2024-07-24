@@ -1,19 +1,16 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
-$username\
+$username \
 $directory\
 $git_branch\
 $git_status\
 $dotnet\
-$rust\
-$gradle\
-$java
 """
 
 add_newline = false
 [line_break]
-disabled = true
+disabled = false
 
 [username]
 show_always = true
@@ -29,12 +26,13 @@ style = "green"
 "Pictures" = " "
 "code" = "󰲋 "
 
+[character]
+success_symbol = "[❯](bold purple)"
+error_symbol = "[✗](bold red) "
+
 [git_branch]
 symbol = " "
 
 [git_status]
 
 [dotnet]
-[rust]
-[gradle]
-[java]

@@ -187,10 +187,10 @@ mode "resize" {
     # right will grow the containers width
     # up will shrink the containers height
     # down will grow the containers height
-    bindsym $right resize shrink width 10px
+    bindsym $left resize shrink width 10px
     bindsym $up resize grow height 10px
     bindsym $down resize shrink height 10px
-    bindsym $left resize grow width 10px
+    bindsym $right resize grow width 10px
 
     # Ditto, with arrow keys
     bindsym Left resize shrink width 10px
@@ -223,14 +223,13 @@ bar {
     }
 }
 #Sound configs
-    bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-    bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-    bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%	
+    bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+    bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
+    bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-	
 #Custom shortcuts
     bindsym $mod+u exec slurp | grim -g - - | wl-copy
     bindsym $mod+Shift+d exec cd ~/books && ls ~/books | wofi -d | xargs -r -I {} zathura "{}"
     bindsym $mod+c exec wl-paste | xargs -r -I {} goldendict "{}"
-    bindsym $mod+Shift+a exec cat yt.ad | wofi -d | xargs -r -I {} mpv "{}"
 #wlsunset config
     exec  wlsunset -l -14.8 -L -40.8
 include /etc/sway/config.d/*
