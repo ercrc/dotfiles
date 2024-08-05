@@ -63,7 +63,7 @@ output * bg wallpapers/wheatfield-with-crows.jpg fill
     input type:keyboard {
    		xkb_layout "us,br"
    		xkb_variant ","
-		xkb_options "grp:win_space_toggle"	
+		xkb_options "grp:win_tab_toggle"	
 }
 bindsym $mod+Tab input * xkb_switch_layout next
 ### Key bindings
