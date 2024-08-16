@@ -62,4 +62,3 @@ alias hibernate="systemctl hibernate"
 alias reboot="systemctl reboot"
 alias img="wezterm imgcat"
 alias cd="z"
-

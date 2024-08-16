@@ -19,5 +19,7 @@ vim.opt.termguicolors = true
 
 vim.opt.inccommand = "split"
 
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
+vim.api.nvim_create_autocmd({"BufWritePre"}, {
+  pattern = {"*.go"},
+  command = "lua vim.lsp.buf.format()",
+})
