@@ -16,7 +16,7 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term ghostty
+set $term foot
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
@@ -25,7 +25,7 @@ set $term ghostty
 set $menu wofi --show drun | xargs swaymsg exec
 ### Output configuration
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg ~/.config/wallpapers/wheatfield-with-crows.jpg fill
+output * bg ~/.config/sway/wallpapers/wheatfield-with-crows.jpg fill
 #
 # Example configuration:
 #
@@ -226,10 +226,6 @@ bar {
     bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
     bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
     bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-	
-#Custom shortcuts
-    bindsym $mod+u exec slurp | grim -g - - | wl-copy
-    bindsym $mod+Shift+d exec cd ~/books && ls ~/books | wofi -d | xargs -r -I {} zathura "{}"
-    bindsym $mod+c exec wl-paste | xargs -r -I {} goldendict "{}"
-#wlsunset config
-    exec  wlsunset -l -14.8 -L -40.8
+
+include scripts/*
 include /etc/sway/config.d/*

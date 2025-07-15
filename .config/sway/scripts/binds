@@ -1,0 +1,4 @@
+#Custom shortcuts
+    bindsym $mod+u exec slurp | grim -g - - | wl-copy
+    bindsym $mod+Shift+d exec cd ~/books && ls ~/books | wofi -d | xargs -r -I {} zathura "{}"
+    bindsym $mod+c exec wl-paste | xargs -r -I {} goldendict "{}"

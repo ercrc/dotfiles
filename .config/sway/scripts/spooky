@@ -1,0 +1,2 @@
+#wlsunset config
+    exec  wlsunset -l -14.8 -L -40.8
