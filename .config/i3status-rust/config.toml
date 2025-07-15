@@ -21,11 +21,11 @@ bat_charging = "|^| "
 [[block]]
 block = "cpu"
 
-#[[block]]
-#block = "temperature"
-#format = "$icon $average C"
-#interval = 10
-#scale = "celsius"
+[[block]]
+block = "temperature"
+format = "$icon $average C"
+interval = 10
+scale = "celsius"
 
 #[[block]]
 #block = "disk_space"

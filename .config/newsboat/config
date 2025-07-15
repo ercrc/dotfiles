@@ -1,7 +1,14 @@
 auto-reload no
 browser firefox
 macro v set browser "setsid -f mpv --no-terminal" ; open-in-browser ; set browser firefox
+
 unbind-key J
 unbind-key K
 bind-key j down
 bind-key k up
+
+feedlist-format "%?T?|%n %8u %t &%t?"
+
+color info              default color235
+color listfocus         white color233
+color listfocus_unread  white color233

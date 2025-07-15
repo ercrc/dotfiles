@@ -1,0 +1,24 @@
+window-decoration = false
+resize-overlay = "never"
+gtk-tabs-location = "hidden"
+
+keybind = ctrl+alt+l=goto_split:right
+keybind = ctrl+alt+k=goto_split:top
+keybind = ctrl+alt+j=goto_split:bottom
+keybind = ctrl+alt+h=goto_split:left
+
+keybind = super+ctrl+shift+k=resize_split:up,10
+keybind = super+ctrl+shift+h=resize_split:left,10
+keybind = super+ctrl+shift+j=resize_split:down,10
+keybind = super+ctrl+shift+l=resize_split:right,10
+
+keybind = ctrl+shift+l=next_tab
+keybind = ctrl+shift+h=previous_tab
+
+mouse-hide-while-typing = true
+clipboard-paste-protection = false
+shell-integration-features = no-cursor
+cursor-color = #ddc7a1
+
+theme = "GruvboxDark"
+

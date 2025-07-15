@@ -1,5 +1,5 @@
 # get current branch in git repo
-function parse_git_branch() {
+parse_git_branch() {
 	BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
 	if [ ! "${BRANCH}" == "" ]
 	then
@@ -11,7 +11,7 @@ function parse_git_branch() {
 }
 
 # get current status of git repo
-function parse_git_dirty {
+parse_git_dirty() {
 	status=`git status 2>&1 | tee`
 	dirty=`echo -n "${status}" 2> /dev/null | grep "modified:" &> /dev/null; echo "$?"`
 	untracked=`echo -n "${status}" 2> /dev/null | grep "Untracked files" &> /dev/null; echo "$?"`
@@ -44,21 +44,33 @@ function parse_git_dirty {
 		echo ""
 	fi
 }
+
+y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
 export EDITOR="nvim"
-export PATH=$PATH:$(go env GOPATH)/bin
 export PS1="\[$(tput setaf 5)\][\[$(tput setaf 2)\]\w\[$(tput setaf 5)\]]\`parse_git_branch\` \[$(tput setaf 6)\]\\$ \[$(tput sgr0)\]"
-test -s ~/.alias && . ~/.alias || true
+test -s ~/.extras && . ~/.extras || true
+
 eval "$(zoxide init bash)"
 
 alias nb="newsboat"
 alias nv="nvim"
 alias py="python3"
 alias ls="ls --color=auto"
-alias ll="ls -l --color=auto"
+alias ll="ls -lh --color=auto"
+alias l="ls -alh --color=auto"
 alias yz="yazi"
-alias pwroff="systemctl poweroff"
-alias sus="systemctl suspend"
-alias hibernate="systemctl hibernate"
-alias reboot="systemctl reboot"
-alias img="wezterm imgcat"
 alias cd="z"
+alias cd..="cd .."
+alias pwroff="systemctl poweroff"     
+alias sus="systemctl suspend"         
+alias hibernate="systemctl hibernate" 
+alias reboot="systemctl reboot"       
+
